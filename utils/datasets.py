@@ -2,7 +2,7 @@
 Author: Huang-Junchen huangjc_mail@163.com
 Date: 2023-06-02 12:55:22
 LastEditors: Huang-Junchen huangjc_mail@163.com
-LastEditTime: 2023-06-02 13:26:14
+LastEditTime: 2023-06-13 17:38:04
 FilePath: /RepNet/tools/DatasetDownloader.py
 Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 '''
@@ -39,7 +39,9 @@ def download(video_folder, video_ids):
             yt = YouTube("https://www.youtube.com/watch?v=" + video_id)
 
             # 获取视频的最高质量
-            stream = yt.streams.get_highest_resolution()
+            # stream = yt.streams.get_highest_resolution()
+            stream = yt.streams.filter(res='720p').first()
+
 
             filename = video_id + '.mp4'
             # 下载视频
